@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
 
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+  <title>Vite App</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <div class="container">
     <form id="todo-form">
       <input type="text" id="todo-input" placeholder="Agregar una tarea" />
       <button type="submit">Agregar</button>
     </form>
 
     <ul id="todo-list"></ul>
+  </div>
 
-    <script type="module" src="/main.js"></script>
-  </body>
+  <button id="login-button">Iniciar Sesión</button>
+
+  <!-- Solo sirve al estar autenticado (y) 8) -->
+  <select id="color-select">
+    <option value="default">Inicia sesión o registrate para utilizar</option>
+    <option value="red">Rojo</option>
+    <option value="blue">Azul</option>
+    <option value="green">Verde</option>
+  </select>
+
+
+
+  <script type="module" src="/main.js"></script>
+</body>
+
 </html>

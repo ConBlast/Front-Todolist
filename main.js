@@ -1,4 +1,4 @@
-import { db } from './firebase';
+import { auth, db } from './firebase';
 import { collection, addDoc, onSnapshot } from 'firebase/firestore';
 
 const todosRef = collection(db, 'todos');
@@ -30,6 +30,7 @@ form.addEventListener('submit', (e) => {
 
 //Impresión de datos
 const todoList = document.querySelector('#todo-list');
+const colorSelect = document.querySelector('#color-select');
 
 // Snap de la conección de los datos
 onSnapshot(todosRef, (querySnapshot) => {
@@ -44,4 +45,24 @@ onSnapshot(todosRef, (querySnapshot) => {
     }
     todoList.appendChild(todoItem);
   });
+
+  // Verificar si el usuario está autenticado
+  const user = auth.currentUser;
+  if (user) {
+    // Habilitar la selección de color y agregar evento de cambio
+    colorSelect.disabled = false;
+    colorSelect.addEventListener('change', (e) => {
+      const color = e.target.value;
+      document.body.style.backgroundColor = color;
+    });
+  } else {
+    // Si no hay usuario autenticado, deshabilitar la selección de color
+    colorSelect.disabled = true;
+  }
+});
+
+//Redirección
+const loginButton = document.getElementById('login-button');
+loginButton.addEventListener('click', () => {
+  window.location.href = './sign-up/sign.html';
 });
